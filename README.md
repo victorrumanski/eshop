@@ -28,3 +28,13 @@ I did not use Zeebe-Spring @s on purpose
 
 I did not use Axon on purpose
 
+
+## Components
+Kafka, Zookeper: https://tecadmin.net/install-apache-kafka-ubuntu/
+
+Zeebe: https://docs.zeebe.io/getting-started/tutorial-setup.html
+
+Postgres
+
+Spring Boot
+

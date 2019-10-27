@@ -1,0 +1,16 @@
+package com.rumanski.ordering;
+
+public class OrderingEvent {
+
+	EventType eventType;
+
+	String payload;
+
+}
+
+enum EventType {
+
+	ORDER_CREATED, ORDER_RESERVED, ORDER_PAID, ORDER_PICKED, ORDER_SHIPPED, ORDER_COMPLETED,
+
+	ORDER_SHIPPING_CANCELED, ORDER_PICKING_CANCELED, ORDER_PAYMENT_CANCELED, ORDER_RESERVATION_CANCELED, ORDER_CANCELED;
+}

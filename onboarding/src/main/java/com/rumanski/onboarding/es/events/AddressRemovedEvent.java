@@ -1,6 +1,6 @@
 package com.rumanski.onboarding.es.events;
 
-public class AddressRemovedEvent extends OnBoardingAbstractEvent {
+public class AddressRemovedEvent extends OnBoardingDomainEvent {
 
 	public final Long addressid;
 

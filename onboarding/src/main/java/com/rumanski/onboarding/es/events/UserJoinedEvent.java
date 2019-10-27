@@ -1,6 +1,6 @@
 package com.rumanski.onboarding.es.events;
 
-public class UserJoinedEvent extends OnBoardingAbstractEvent {
+public class UserJoinedEvent extends OnBoardingDomainEvent {
 
 	public final String name, email, password;
 

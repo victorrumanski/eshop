@@ -1,5 +1,6 @@
 package com.rumanski.basket.es.store;
 
+import java.time.Duration;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -106,7 +107,7 @@ public class BasketPriceChangeKafkaConsumer {
 			 */
 			while (!stop) {
 
-				ConsumerRecords<String, String> records = consumer.poll(100);
+				ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
 
 				for (ConsumerRecord<String, String> record : records) {
 

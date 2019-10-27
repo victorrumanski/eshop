@@ -14,7 +14,7 @@ enum EventType {
 
 	SMS_SENT,
 
-	NOTIFICATION_SEND,
+	NOTIFICATION_SENT,
 
 	;
 }

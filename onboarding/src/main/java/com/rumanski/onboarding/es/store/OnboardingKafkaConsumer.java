@@ -1,5 +1,6 @@
 package com.rumanski.onboarding.es.store;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +20,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.rumanski.onboarding.es.events.OnBoardingAbstractEvent;
-import com.rumanski.onboarding.es.events.OnBoardingAbstractEvent.EventType;
+import com.rumanski.onboarding.es.events.OnBoardingDomainEvent;
+import com.rumanski.onboarding.es.events.OnBoardingDomainEvent.EventType;
 
 @Component
 /*
@@ -98,7 +99,7 @@ public class OnboardingKafkaConsumer {
 
 		public void loop() {
 			List<String> topics = new ArrayList<>();
-			EventType[] values = OnBoardingAbstractEvent.EventType.values();
+			EventType[] values = OnBoardingDomainEvent.EventType.values();
 			for (EventType et : values) {
 				topics.add(et.name());
 			}
@@ -113,7 +114,7 @@ public class OnboardingKafkaConsumer {
 			 */
 			while (!stop) {
 
-				ConsumerRecords<String, String> records = consumer.poll(100);
+				ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
 
 				for (ConsumerRecord<String, String> record : records) {
 

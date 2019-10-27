@@ -36,7 +36,7 @@ public class BasketEvent {
 
 	@Override
 	public String toString() {
-		return "CatalogEvent [id=" + id + ", created=" + created + ", type=" + type + ", correlationid=" + correlationid
+		return "BasketEvent [id=" + id + ", created=" + created + ", type=" + type + ", correlationid=" + correlationid
 				+ ", payload=" + payload + "]";
 	}
 

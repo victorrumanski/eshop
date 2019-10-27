@@ -2,13 +2,13 @@ package com.rumanski.catalog.es.events;
 
 import java.util.Date;
 
-public class CatalogAbstractEvent {
+public class CatalogDomainEvent {
 
 	public final EventType type;
 
 	public final Date timestamp = new Date();
 
-	public CatalogAbstractEvent(EventType type) {
+	public CatalogDomainEvent(EventType type) {
 		super();
 		this.type = type;
 	}

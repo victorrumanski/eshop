@@ -1,6 +1,6 @@
 package com.rumanski.catalog.es.events;
 
-public class AvailabilityChangeEvent extends CatalogAbstractEvent {
+public class AvailabilityChangeEvent extends CatalogDomainEvent {
 
 	public final Long productid;
 	public final boolean available;

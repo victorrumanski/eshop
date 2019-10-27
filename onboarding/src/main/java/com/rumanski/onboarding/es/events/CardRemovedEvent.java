@@ -1,6 +1,6 @@
 package com.rumanski.onboarding.es.events;
 
-public class CardRemovedEvent extends OnBoardingAbstractEvent {
+public class CardRemovedEvent extends OnBoardingDomainEvent {
 
 	public final Long cardid;
 

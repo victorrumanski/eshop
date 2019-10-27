@@ -2,7 +2,7 @@ package com.rumanski.basket.es.events;
 
 import java.math.BigDecimal;
 
-public class BasketItemAddedEvent extends BasketAbstractEvent {
+public class BasketItemAddedEvent extends BasketDomainEvent {
 
 	public final Long userid;
 	public final Long productid;

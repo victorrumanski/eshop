@@ -1,6 +1,6 @@
 package com.rumanski.onboarding.es.events;
 
-public class AddressAddedEvent extends OnBoardingAbstractEvent {
+public class AddressAddedEvent extends OnBoardingDomainEvent {
 
 	public final Long userid;
 

@@ -1,5 +1,6 @@
 package com.rumanski.catalog.es.store;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +20,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.rumanski.catalog.es.events.CatalogAbstractEvent;
-import com.rumanski.catalog.es.events.CatalogAbstractEvent.EventType;
+import com.rumanski.catalog.es.events.CatalogDomainEvent;
+import com.rumanski.catalog.es.events.CatalogDomainEvent.EventType;
 
 @Component
 /*
@@ -98,7 +99,7 @@ public class CatalogKafkaConsumer {
 
 		public void loop() {
 			List<String> topics = new ArrayList<>();
-			EventType[] values = CatalogAbstractEvent.EventType.values();
+			EventType[] values = CatalogDomainEvent.EventType.values();
 			for (EventType et : values) {
 				topics.add(et.name());
 			}
@@ -113,7 +114,7 @@ public class CatalogKafkaConsumer {
 			 */
 			while (!stop) {
 
-				ConsumerRecords<String, String> records = consumer.poll(100);
+				ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
 
 				for (ConsumerRecord<String, String> record : records) {
 

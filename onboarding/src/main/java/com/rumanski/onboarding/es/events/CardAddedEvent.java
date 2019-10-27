@@ -2,7 +2,7 @@ package com.rumanski.onboarding.es.events;
 
 import java.util.Date;
 
-public class CardAddedEvent extends OnBoardingAbstractEvent {
+public class CardAddedEvent extends OnBoardingDomainEvent {
 
 	public final Long userid;
 

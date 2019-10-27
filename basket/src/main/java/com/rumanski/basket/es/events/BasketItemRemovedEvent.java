@@ -1,6 +1,6 @@
 package com.rumanski.basket.es.events;
 
-public class BasketItemRemovedEvent extends BasketAbstractEvent {
+public class BasketItemRemovedEvent extends BasketDomainEvent {
 
 	public final Long basketitemid;
 

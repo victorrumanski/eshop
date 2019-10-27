@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.rumanski.catalog.es.events.AvailabilityChangeEvent;
-import com.rumanski.catalog.es.events.PriceChangeEvent;
+import com.rumanski.catalog.es.events.PriceChangedEvent;
 import com.rumanski.catalog.model.Product;
 import com.rumanski.catalog.repository.ProductRepository;
 
@@ -14,7 +14,7 @@ public class CatalogEventHandler {
 	@Autowired
 	ProductRepository productRepo;
 
-	public void handle(PriceChangeEvent event) {
+	public void handle(PriceChangedEvent event) {
 		Product x = productRepo.findById(event.productid)
 				.orElseThrow(() -> new IllegalArgumentException("PRODUCT ID " + event.productid + " not found"));
 

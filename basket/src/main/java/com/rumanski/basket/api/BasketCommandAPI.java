@@ -33,4 +33,16 @@ public class BasketCommandAPI {
 		return ResponseEntity.ok().build();
 	}
 
+	@PostMapping("/{userid}/clear")
+	public ResponseEntity<Void> clear(@PathVariable(value = "userid") Long userid) {
+		commands.clear(userid);
+		return ResponseEntity.ok().build();
+	}
+
+	@PostMapping("/{userid}/placeorder")
+	public ResponseEntity<Void> placeOrder(@PathVariable(value = "userid") Long userid, Long addressid, Long cardid) {
+		commands.placeOrder(userid, addressid, cardid);
+		return ResponseEntity.ok().build();
+	}
+
 }

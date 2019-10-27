@@ -10,8 +10,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.rumanski.catalog.es.events.AvailabilityChangeEvent;
-import com.rumanski.catalog.es.events.CatalogAbstractEvent;
-import com.rumanski.catalog.es.events.PriceChangeEvent;
+import com.rumanski.catalog.es.events.CatalogDomainEvent;
+import com.rumanski.catalog.es.events.PriceChangedEvent;
 import com.rumanski.catalog.es.store.EventStore;
 import com.rumanski.catalog.model.CatalogEvent;
 
@@ -26,7 +26,7 @@ public class CatalogCommandHandler {
 	EventStore store;
 
 	public void changePrice(Long productid, BigDecimal price) {
-		PriceChangeEvent event = new PriceChangeEvent(productid, price);
+		PriceChangedEvent event = new PriceChangedEvent(productid, price);
 		eventHandler.handle(event);
 		store.saveAndPublish(convert(event, event.productid));
 	}
@@ -37,7 +37,7 @@ public class CatalogCommandHandler {
 		store.saveAndPublish(convert(event, event.productid));
 	}
 
-	private CatalogEvent convert(CatalogAbstractEvent src, Long correlationID) {
+	private CatalogEvent convert(CatalogDomainEvent src, Long correlationID) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 		String payload;

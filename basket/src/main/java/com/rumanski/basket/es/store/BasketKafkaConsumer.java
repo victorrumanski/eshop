@@ -1,5 +1,6 @@
 package com.rumanski.basket.es.store;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,8 +20,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import com.rumanski.basket.es.events.BasketAbstractEvent;
-import com.rumanski.basket.es.events.BasketAbstractEvent.EventType;
+import com.rumanski.basket.es.events.BasketDomainEvent;
+import com.rumanski.basket.es.events.BasketDomainEvent.EventType;
 
 @Component
 /*
@@ -97,7 +98,7 @@ public class BasketKafkaConsumer {
 
 		public void loop() {
 			List<String> topics = new ArrayList<>();
-			EventType[] values = BasketAbstractEvent.EventType.values();
+			EventType[] values = BasketDomainEvent.EventType.values();
 			for (EventType et : values) {
 				topics.add(et.name());
 			}
@@ -112,7 +113,7 @@ public class BasketKafkaConsumer {
 			 */
 			while (!stop) {
 
-				ConsumerRecords<String, String> records = consumer.poll(100);
+				ConsumerRecords<String, String> records = consumer.poll(Duration.ofMillis(100));
 
 				for (ConsumerRecord<String, String> record : records) {
 

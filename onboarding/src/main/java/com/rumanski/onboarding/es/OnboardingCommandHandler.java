@@ -16,7 +16,7 @@ import com.rumanski.onboarding.es.events.AddressChangedEvent;
 import com.rumanski.onboarding.es.events.AddressRemovedEvent;
 import com.rumanski.onboarding.es.events.CardAddedEvent;
 import com.rumanski.onboarding.es.events.CardRemovedEvent;
-import com.rumanski.onboarding.es.events.OnBoardingAbstractEvent;
+import com.rumanski.onboarding.es.events.OnBoardingDomainEvent;
 import com.rumanski.onboarding.es.events.UserJoinedEvent;
 import com.rumanski.onboarding.es.store.EventStore;
 import com.rumanski.onboarding.model.Address;
@@ -77,7 +77,7 @@ public class OnboardingCommandHandler {
 		store.saveAndPublish(convert(event, cardid));
 	}
 
-	private OnboardingEvent convert(OnBoardingAbstractEvent src, Long correlationID) {
+	private OnboardingEvent convert(OnBoardingDomainEvent src, Long correlationID) {
 		ObjectMapper objectMapper = new ObjectMapper();
 		objectMapper.configure(SerializationFeature.INDENT_OUTPUT, true);
 		String payload;

@@ -1,9 +1,14 @@
 # eshop
 This project tries to build an e-commerce using microservices separated by Bounded Contexts
+
 Inter microservice notification is via kafka
+
 Each microservice has its own Relational DB.
+
 The complex PlaceOrder workflow is handled by Zeebe BPMN
+
 I try to use DDD where it makes sense
+
 I tried to use a simplified CQRS + Event Sourcing, so every meaningful event is saved 
 
 

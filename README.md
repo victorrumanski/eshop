@@ -20,3 +20,8 @@ Integration Events: Those domain events that other microservices are interested.
 
 ![Alt text](place-order.png?raw=true "Optional Title")
 
+PS:
+
+I did not use Kafka-Spring @s on purpose
+
+I did not use Zeebe-Spring @s on purpose

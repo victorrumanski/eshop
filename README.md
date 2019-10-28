@@ -28,6 +28,9 @@ I did not use Zeebe-Spring @s on purpose
 
 I did not use Axon on purpose
 
+I did not use Avro Schema Registry on purpose
+
+
 
 ### Components
 Kafka, Zookeper: https://tecadmin.net/install-apache-kafka-ubuntu/

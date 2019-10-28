@@ -14,7 +14,7 @@ public class ZeebeDeployWorkflow {
 		System.out.println("Connected.");
 
 		final DeploymentEvent deployment = client.newDeployCommand()
-				.addResourceFile("/home/victor/Documents/place-order.bpmn")
+				.addResourceFile("C:\\dev\\projects\\eshop\\place-order.bpmn")
 				.send()
 				.join();
 

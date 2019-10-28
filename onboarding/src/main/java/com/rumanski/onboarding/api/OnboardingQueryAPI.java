@@ -32,12 +32,11 @@ public class OnboardingQueryAPI {
 
 	@GetMapping("/users/{id}")
 	public ResponseEntity<User> getUser(@PathVariable(value = "id") Long id) {
-		return ResponseEntity.ok().body(
-				userRepo.findById(id).map(user -> {
-					user.addresses = addressRepo.findByUseridAndRemoved(user.getId(), false);
-					user.cards = cardRepo.findByUserid(user.getId());
-					return user;
-				}).orElseThrow(() -> new ResourceNotFoundException("USER", "ID", id)));
+		return ResponseEntity.ok().body(userRepo.findById(id).map(user -> {
+			user.addresses = addressRepo.findByUseridAndRemoved(user.getId(), false);
+			user.cards = cardRepo.findByUserid(user.getId());
+			return user;
+		}).orElseThrow(() -> new ResourceNotFoundException("USER", "ID", id)));
 	}
 
 	@GetMapping("/users/{userid}/addresses")
@@ -47,8 +46,8 @@ public class OnboardingQueryAPI {
 
 	@GetMapping("/users/{userid}/addresses/{id}")
 	public ResponseEntity<Address> getAddress(@PathVariable(value = "id") Long id) {
-		return ResponseEntity.ok().body(
-				addressRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("ADDRESS", "ID", id)));
+		return ResponseEntity.ok()
+				.body(addressRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("ADDRESS", "ID", id)));
 	}
 
 	@GetMapping("/users/{userid}/cards")
@@ -58,8 +57,14 @@ public class OnboardingQueryAPI {
 
 	@GetMapping("/users/{userid}/cards/{id}")
 	public ResponseEntity<Card> getCard(@PathVariable(value = "id") Long id) {
-		return ResponseEntity.ok().body(
-				cardRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("CREDITCARD", "ID", id)));
+		return ResponseEntity.ok()
+				.body(cardRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("CREDITCARD", "ID", id)));
+	}
+
+	@GetMapping("/cards/{id}")
+	public ResponseEntity<Card> card(@PathVariable(value = "id") Long id) {
+		return ResponseEntity.ok()
+				.body(cardRepo.findById(id).orElseThrow(() -> new ResourceNotFoundException("CREDITCARD", "ID", id)));
 	}
 
 	@GetMapping

@@ -105,7 +105,18 @@ public class ReserveStocksZeebeWorkers {
 			reservationRepo.flush();
 			stockRepo.flush();
 
-			vars.put("success", false);
+			
+			// ********* //
+			// ********* //
+			// ********* //
+			
+			vars.put("success", true);
+			
+			// ********* //
+			// ********* //
+			// ********* //
+			
+			
 			ObjectMapper mapper = new ObjectMapper();
 
 			log.info("vars after: " + mapper.writeValueAsString(vars));
